@@ -1,0 +1,62 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+ins_path = "C:/Users/LENOVO/Desktop/Python_Projects/Covid_Data_Visualization/insurance.csv"
+ins_data = pd.read_csv(ins_path, index_col = "SNo")
+
+#ins_data = ins_data.head()   -------> first 5 rows(default)
+#ins_data = ins_data.head(n)   -------> first n rows
+#print(ins_data)
+#plt.figure(figsize=(8,6))
+
+#sns.set_style("dark")        ------> for dark theme
+    ''' Available themes are.....
+            "darkgrid"
+            "whitegrid"
+            "dark"
+            "white"
+            "ticks"
+    '''
+
+#LinePlot ->
+#sns.lineplot(data = ins_data)
+
+#BarPlot ->
+#sns.barplot(x=ins_data.index , y=ins_data["bmi"])
+
+#Heatmap ->
+#sns.heatmap(data = ins_data , annot = True)
+                                                # won't work in this case...All col should be in int or float
+                                                # Annot=True puts the values in the cell
+                        
+#ScatterPlot ->
+#sns.scatterplot(x = ins_data["bmi"], y =ins_data["charges"], hue = ins_data["smoker"])
+                                                #hue gives the color code
+                                                
+#RegPlot ->
+#sns.regplot(x=ins_data["bmi"], y=ins_data["charges"])
+                                                # Regression Line Plot
+
+#Lmplot ->
+#sns.lmplot(x="bmi", y="charges", hue="smoker", data=ins_data)
+                                                # this is one is slightly diff
+
+#Categorical ScatterPlot ->
+#sns.swarmplot(x=ins_data["smoker"], y=ins_data["charges"])
+
+#Histogram ->
+#sns.distplot(a=ins_data['bmi'], kde =False)
+                                                # a =column name, kde = False
+                                                
+#Kernal Density Estimate ->
+#sns.kdeplot(data=ins_data["bmi"] , shade=True)
+                                                # shade = True, colours the bounded part
+#2D KDE plot ->
+#sns.jointplot(x=ins_data["bmi"], y=ins_data["age"], kind = "kde")
+                                                #kind = kde
+
+
+
+#plt.legend()     -----Force legend i'e labels to appear
+plt.show()
