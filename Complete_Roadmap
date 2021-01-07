@@ -1,16 +1,21 @@
 import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt      # importing modules
 import seaborn as sns
 
-ins_path = "C:/Users/LENOVO/Desktop/Python_Projects/Covid_Data_Visualization/insurance.csv"
-ins_data = pd.read_csv(ins_path, index_col = "SNo")
+file_path = "C:/...input/mydata.csv"    # CSV filepath  #to do
+file_data = pd.read_csv(file_path, index_col = "SNo")   # read the csv file
 
-#ins_data = ins_data.head()   -------> first 5 rows(default)
-#ins_data = ins_data.head(n)   -------> first n rows
-#print(ins_data)
-#plt.figure(figsize=(8,6))
+file_data = file_data.head()   #-------> gives us the first 5 rows(default)
+file_data = file_data.head(n)   #-------> gives us the first n rows
 
-#sns.set_style("dark")        ------> for dark theme
+file_data = file_data.tail()   #-------> gives us the last 5 rows(default)
+file_data = file_data.tail(n)  #-------> gives us the last n rows
+print(file_data) 
+
+plt.figure(figsize=(8,6))  #plt window
+
+sns.set_style("dark")        #------> for dark theme
+
     ''' Available themes are.....
             "darkgrid"
             "whitegrid"
@@ -20,43 +25,40 @@ ins_data = pd.read_csv(ins_path, index_col = "SNo")
     '''
 
 #LinePlot ->
-#sns.lineplot(data = ins_data)
+sns.lineplot(data = file_data)
 
 #BarPlot ->
-#sns.barplot(x=ins_data.index , y=ins_data["bmi"])
+sns.barplot(x=file_data.index , y=file_data["column_name"])
 
 #Heatmap ->
-#sns.heatmap(data = ins_data , annot = True)
-                                                # won't work in this case...All col should be in int or float
-                                                # Annot=True puts the values in the cell
+sns.heatmap(data = file_data , annot = True)
+                                                # Annot=True put the values in the cells
                         
 #ScatterPlot ->
-#sns.scatterplot(x = ins_data["bmi"], y =ins_data["charges"], hue = ins_data["smoker"])
-                                                #hue gives the color code
+sns.scatterplot(x = file_data["column_name"], y =file_data["column_name"], hue = file_data["column_name"])
+                                                # hue gives the color code
                                                 
 #RegPlot ->
-#sns.regplot(x=ins_data["bmi"], y=ins_data["charges"])
+sns.regplot(x=file_data["column_name"], y=file_data["column_name"])
                                                 # Regression Line Plot
 
 #Lmplot ->
-#sns.lmplot(x="bmi", y="charges", hue="smoker", data=ins_data)
-                                                # this is one is slightly diff
+sns.lmplot(x="column_name", y="column_name", hue="column_name", data=file_data)
 
 #Categorical ScatterPlot ->
-#sns.swarmplot(x=ins_data["smoker"], y=ins_data["charges"])
+sns.swarmplot(x=file_data["column_name"], y=file_data["column_name"])
 
 #Histogram ->
-#sns.distplot(a=ins_data['bmi'], kde =False)
-                                                # a =column name, kde = False
-                                                
+sns.distplot(a=file_data['column_name'], kde =False)
+                                                # kde = True gives the KDE curve
 #Kernal Density Estimate ->
-#sns.kdeplot(data=ins_data["bmi"] , shade=True)
+sns.kdeplot(data=file_data["column_name"] , shade=True)
                                                 # shade = True, colours the bounded part
 #2D KDE plot ->
-#sns.jointplot(x=ins_data["bmi"], y=ins_data["age"], kind = "kde")
+sns.jointplot(x=file_data["column_name"], y=file_data["column_name"], kind = "kde")
                                                 #kind = kde
 
 
 
-#plt.legend()     -----Force legend i'e labels to appear
+#plt.legend()     -----Force legend (i'e labels) to appear
 plt.show()
